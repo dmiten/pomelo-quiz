@@ -400,7 +400,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "https://battle-soldier.glitch.me/api/users/info",
+					"raw": "https://battle-soldier.glitch.me/api/error",
 					"protocol": "https",
 					"host": [
 						"battle-soldier",
@@ -409,8 +409,7 @@
 					],
 					"path": [
 						"api",
-						"users",
-						"info"
+						"error"
 					]
 				},
 				"description": "Simulate internal server error"
