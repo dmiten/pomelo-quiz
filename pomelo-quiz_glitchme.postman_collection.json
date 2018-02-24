@@ -1,0 +1,461 @@
+{
+	"info": {
+		"name": "pomelo-quiz_glitchme",
+		"_postman_id": "4cf1c5b8-f164-557f-d9f0-31773aac70d4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e91027a0-1c2c-45c1-a61f-16a3e7920112",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://battle-soldier.glitch.me/",
+					"protocol": "https",
+					"host": [
+						"battle-soldier",
+						"glitch",
+						"me"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "Status 200"
+			},
+			"response": []
+		},
+		{
+			"name": "Get new token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3be57e0-4ccd-4ecf-a355-97d1ad4b9aa6",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('access_token', jsonData.access_token);",
+							"postman.setEnvironmentVariable('refresh_token', jsonData.refresh_token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "tester",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "tester",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Get new token"
+			},
+			"response": []
+		},
+		{
+			"name": "Restricted access",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d084166-4ca5-4ffd-adca-5d914ad04f04",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://battle-soldier.glitch.me/api/users/info",
+					"protocol": "https",
+					"host": [
+						"battle-soldier",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"api",
+						"users",
+						"info"
+					]
+				},
+				"description": "Access with token to restricted area"
+			},
+			"response": []
+		},
+		{
+			"name": "Status 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8a674a69-4701-44f5-9582-ddd90a24cf96",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "tester",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "tester",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "usernam",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Status 400"
+			},
+			"response": []
+		},
+		{
+			"name": "Status 401",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0cfe18d3-5a00-4e01-9f00-dd1e8ed426ff",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "verystrangetoken",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://battle-soldier.glitch.me/api/users/info",
+					"protocol": "https",
+					"host": [
+						"battle-soldier",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"api",
+						"users",
+						"info"
+					]
+				},
+				"description": "Access with wrong token to restricted area.\nStatus 401."
+			},
+			"response": []
+		},
+		{
+			"name": "Status 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6500ce4d-b103-4530-a39c-90377e6b761b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://battle-soldier.glitch.me/nobodyknow",
+					"protocol": "https",
+					"host": [
+						"battle-soldier",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"nobodyknow"
+					]
+				},
+				"description": "Status 404"
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4b41b720-f71e-4a8b-9a4d-003a7f1c4a50",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('access_token', jsonData.access_token);",
+							"postman.setEnvironmentVariable('refresh_token', jsonData.refresh_token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "tester",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "tester",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "{{refresh_token}}",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Refresh token"
+			},
+			"response": []
+		}
+	]
+}

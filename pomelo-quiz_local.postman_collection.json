@@ -1,0 +1,465 @@
+{
+	"info": {
+		"name": "pomelo-quiz_local",
+		"_postman_id": "bab8a325-1aaa-96a1-e6a0-f6e72ba51558",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16f1700b-1fd1-4a72-97e3-65c6fee97a7d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:1337/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1337",
+					"path": [
+						""
+					]
+				},
+				"description": "Status 200"
+			},
+			"response": []
+		},
+		{
+			"name": "Get new token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8942cba1-df9b-4b14-934a-86c26b15bbe4",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('access_token', jsonData.access_token);",
+							"postman.setEnvironmentVariable('refresh_token', jsonData.refresh_token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "tester",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "tester",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Get new token"
+			},
+			"response": []
+		},
+		{
+			"name": "Restricted access",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d7d0cb83-bae3-49a5-b68b-c20319b402a2",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "verystrangetoken",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:1337/api/users/info",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"users",
+						"info"
+					]
+				},
+				"description": "Access with token to restricted area"
+			},
+			"response": []
+		},
+		{
+			"name": "Status 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0af747d5-d419-4c37-b966-7085a4ce7092",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "tester",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "tester",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "usernam",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Status 400"
+			},
+			"response": []
+		},
+		{
+			"name": "Status 401",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ea132fe0-483e-453f-a692-2bb101c8e695",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:1337/api/users/info",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"users",
+						"info"
+					]
+				},
+				"description": "Access with wrong token to restricted area"
+			},
+			"response": []
+		},
+		{
+			"name": "Status 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1f3e2fed-b261-4e19-b2e3-58b9d598d542",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:1337/nobodyknow",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1337",
+					"path": [
+						"nobodyknow"
+					]
+				},
+				"description": "Status 404"
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "26aac71e-5d0c-4f25-a936-314fda99dbe3",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('access_token', jsonData.access_token);",
+							"postman.setEnvironmentVariable('refresh_token', jsonData.refresh_token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "tester",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "tester",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "{{refresh_token}}",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:1337/api/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Refresh token"
+			},
+			"response": []
+		}
+	]
+}

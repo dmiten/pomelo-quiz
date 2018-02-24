@@ -1,0 +1,27 @@
+{
+  "name": "pomelo-quiz",
+  "version": "1.0.0",
+  "description": "test task for back-end position",
+  "main": "bin/server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node ./bin/server.js"
+  },
+  "author": "Dmitry Tenitskiy",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "faker": "^4.1.0",
+    "mongoose": "^5.0.6",
+    "nconf": "^0.10.0",
+    "oauth2orize": "^1.11.0",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-oauth2-client-password": "^0.1.2",
+    "winston": "^2.4.0"
+  }
+}

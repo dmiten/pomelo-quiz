@@ -1,0 +1,23 @@
+{
+    "port": 1337,
+    "security": {
+        "tokenLife" : 10800
+    },
+    "mongoose": {
+        "uri": ""
+    },
+    "default": {
+        "api": {
+            "version" : "v1"
+        },
+        "user": {
+            "username": "test",
+            "password": "test"
+        },
+        "client": {
+            "name": "api-tester",
+            "clientId": "tester",
+            "clientSecret": "test"
+        }
+    }
+}
