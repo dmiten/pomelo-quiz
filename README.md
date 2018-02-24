@@ -12,16 +12,14 @@ You have ability to read/edit code* @glitch.com
 
 https://glitch.com/edit/#!/battle-soldier
 
-*and run it too if you provide your own URI for mongo DB in .env file and change related settings in lib/db/mongoose.js
+*and run it too if you provide your own URI for mongo DB in .env file
+(in case of local installation config.json used for set mongo URI)
 
 **Keep in mind that some time will be needed for start app instance @glitch.com
 
-In case of local installation you have to provide information about mongo in
-config.json
-
 You can populate mongo base with data from this file by execute
 ```
-generateData.js
+node generateData.js
 ```
 
 Postman's collections (for local and glitch.com) and environment are included in solution.
