@@ -125,12 +125,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:1337/api/oauth/token",
-					"protocol": "http",
+					"raw": "https://battle-soldier.glitch.me/api/oauth/token",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"battle-soldier",
+						"glitch",
+						"me"
 					],
-					"port": "1337",
 					"path": [
 						"api",
 						"oauth",
@@ -264,12 +265,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:1337/api/oauth/token",
-					"protocol": "http",
+					"raw": "https://battle-soldier.glitch.me/api/oauth/token",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"battle-soldier",
+						"glitch",
+						"me"
 					],
-					"port": "1337",
 					"path": [
 						"api",
 						"oauth",
@@ -441,12 +443,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:1337/api/oauth/token",
-					"protocol": "http",
+					"raw": "https://battle-soldier.glitch.me/api/oauth/token",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"battle-soldier",
+						"glitch",
+						"me"
 					],
-					"port": "1337",
 					"path": [
 						"api",
 						"oauth",

@@ -126,10 +126,12 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:1337/api/oauth/token",
-					"protocol": "http",
+					"raw": "127.0.0.1:1337/api/oauth/token",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "1337",
 					"path": [
@@ -266,10 +268,12 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:1337/api/oauth/token",
-					"protocol": "http",
+					"raw": "127.0.0.1:1337/api/oauth/token",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "1337",
 					"path": [
@@ -445,10 +449,12 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:1337/api/oauth/token",
-					"protocol": "http",
+					"raw": "127.0.0.1:1337/api/oauth/token",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "1337",
 					"path": [
