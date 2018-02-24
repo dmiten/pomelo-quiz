@@ -7,45 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "Status 200",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "e91027a0-1c2c-45c1-a61f-16a3e7920112",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "https://battle-soldier.glitch.me/",
-					"protocol": "https",
-					"host": [
-						"battle-soldier",
-						"glitch",
-						"me"
-					],
-					"path": [
-						""
-					]
-				},
-				"description": "Status 200"
-			},
-			"response": []
-		},
-		{
 			"name": "Get new token",
 			"event": [
 				{
@@ -187,6 +148,45 @@
 					]
 				},
 				"description": "Access with token to restricted area"
+			},
+			"response": []
+		},
+		{
+			"name": "Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e91027a0-1c2c-45c1-a61f-16a3e7920112",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://battle-soldier.glitch.me/",
+					"protocol": "https",
+					"host": [
+						"battle-soldier",
+						"glitch",
+						"me"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "Status 200"
 			},
 			"response": []
 		},
@@ -366,6 +366,54 @@
 					]
 				},
 				"description": "Status 404"
+			},
+			"response": []
+		},
+		{
+			"name": "Status 500",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d084166-4ca5-4ffd-adca-5d914ad04f04",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://battle-soldier.glitch.me/api/users/info",
+					"protocol": "https",
+					"host": [
+						"battle-soldier",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"api",
+						"users",
+						"info"
+					]
+				},
+				"description": "Simulate internal server error"
 			},
 			"response": []
 		},

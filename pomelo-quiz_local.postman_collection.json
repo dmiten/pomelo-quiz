@@ -7,46 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "Status 200",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "16f1700b-1fd1-4a72-97e3-65c6fee97a7d",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "127.0.0.1:1337/",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "1337",
-					"path": [
-						""
-					]
-				},
-				"description": "Status 200"
-			},
-			"response": []
-		},
-		{
 			"name": "Get new token",
 			"event": [
 				{
@@ -150,11 +110,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d7d0cb83-bae3-49a5-b68b-c20319b402a2",
+						"id": "27c72050-2277-4a25-b612-0af7fdb1cc72",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Status code is 401\", function () {",
-							"    pm.response.to.have.status(401);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
 							"});"
 						]
 					}
@@ -166,7 +126,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "verystrangetoken",
+							"value": "{{access_token}}",
 							"type": "string"
 						}
 					]
@@ -190,6 +150,46 @@
 					]
 				},
 				"description": "Access with token to restricted area"
+			},
+			"response": []
+		},
+		{
+			"name": "Status 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16f1700b-1fd1-4a72-97e3-65c6fee97a7d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:1337/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1337",
+					"path": [
+						""
+					]
+				},
+				"description": "Status 200"
 			},
 			"response": []
 		},
@@ -372,6 +372,54 @@
 					]
 				},
 				"description": "Status 404"
+			},
+			"response": []
+		},
+		{
+			"name": "Status 500",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6d6cb36-ce1a-430c-8592-9591f7f2d992",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:1337/api/error",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"error"
+					]
+				},
+				"description": "Emulate internal error"
 			},
 			"response": []
 		},
