@@ -1,7 +1,4 @@
-const faker = require('faker');
-
 const lib = process.cwd() + '/lib/';
-
 const log = require(lib + 'log')(module);
 const db = require(lib + 'db/mongoose');
 const config = require(lib + 'config');
@@ -14,7 +11,7 @@ const RefreshToken = require(lib + 'model/refreshToken');
 User.remove({}, (err) => {
   const user = new User({
     username: config.get('default:user:username'),
-    password: config.get('default:user:password'),
+    password: config.get('default:user:password')
   });
 
   user.save((err, user) => {
