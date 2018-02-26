@@ -308,7 +308,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{access_token}}",
+							"value": "verystrangetoken",
 							"type": "string"
 						}
 					]
