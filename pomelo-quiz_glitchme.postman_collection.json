@@ -12,19 +12,17 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "db2c0d0a-a806-4c94-9a6d-f453217007d4",
+						"id": "9fec2fb6-9c74-46e8-bc13-42adb8f06253",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"if (responseBody !== 'Unauthorized') {",
-							"    var jsonData = JSON.parse(responseBody);",
+							"var jsonData = JSON.parse(responseBody);",
 							"",
-							"    postman.setEnvironmentVariable('access_token', jsonData.access_token);",
-							"    postman.setEnvironmentVariable('refresh_token', jsonData.refresh_token);   ",
-							"}"
+							"postman.setEnvironmentVariable('access_token', jsonData.access_token);",
+							"postman.setEnvironmentVariable('refresh_token', jsonData.refresh_token);"
 						]
 					}
 				}
@@ -424,19 +422,17 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "305d0786-5dfc-42c0-b60b-ae72b140bf33",
+						"id": "b1b024c5-2053-44e0-b7b9-756eabdccc30",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"if (responseBody !== 'Unauthorized') {",
-							"    var jsonData = JSON.parse(responseBody);",
+							"var jsonData = JSON.parse(responseBody);",
 							"",
-							"    postman.setEnvironmentVariable('access_token', jsonData.access_token);",
-							"    postman.setEnvironmentVariable('refresh_token', jsonData.refresh_token);   ",
-							"}"
+							"postman.setEnvironmentVariable('access_token', jsonData.access_token);",
+							"postman.setEnvironmentVariable('refresh_token', jsonData.refresh_token);"
 						]
 					}
 				}
